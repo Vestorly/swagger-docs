@@ -8,6 +8,8 @@ require "swagger/docs/methods"
 require "swagger/docs/task"
 require "swagger/docs/version"
 
+puts "****** Using Vestorly Custom Build ****** "
+
 module Swagger
   module Docs
   end
