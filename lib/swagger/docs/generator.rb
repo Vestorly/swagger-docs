@@ -74,7 +74,7 @@ module Swagger
               resources << generate_resource(ret[:path], ret[:apis], ret[:models], settings, root, config)
               debased_path = get_debased_path(ret[:path], settings[:controller_base_path])
               resource_api = {
-                path: "#{Config.transform_path(trim_leading_slash(debased_path), api_version)}.{format}",
+                path: "#{Config.transform_path(trim_leading_slash(debased_path), api_version)}.json",
                 description: ret[:klass].swagger_config[:description]
               }
               root[:apis] << resource_api
@@ -138,6 +138,7 @@ module Swagger
               ret = get_route_path_apis(path, route, klass, settings, config)
               apis = apis + ret[:apis]
               models.merge!(ret[:models])
+              nn = ret[:nickname].present?
               defined_nicknames << ret[:nickname] if ret[:nickname].present?
             end
           end
